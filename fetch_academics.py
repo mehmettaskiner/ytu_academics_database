@@ -28,7 +28,8 @@ class Academic_Fetcher():
         return soup
 
     def process_soup(self, soup):
-        all_rows = soup.find_all("tr", attrs = {'style': 'background-color:#ddd;'})
+        body_tree = soup.find("tbody")
+        all_rows = body_tree.find_all("tr")
         for row in all_rows:
             academic_name = row.find("td", attrs = {'width': '120px'}).text
             academic_department = row.find("td", attrs = {'width': '150px'}).text
